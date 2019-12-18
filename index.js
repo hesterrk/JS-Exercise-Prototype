@@ -78,6 +78,7 @@ Person.prototype.toString = function() {
     - STRETCH: A car which runs out of `fuel` while driving can't drive any more distance:
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
+ 
 
 function Car(model, milesPerGallon) {
   this.model = model;
@@ -89,19 +90,40 @@ function Car(model, milesPerGallon) {
 
 Car.prototype.fill = function(gallons) {
   
-  return this.tank + gallons;
+  return this.tank += gallons;
 }
+
+// 1 gallon -- 40 miles per gallon    40mpg
+// 10 gallons-- 400 miles
+// 0.125  gallons     -- 5 miles
+
+
 
 Car.prototype.drive = function(distance) {
-  if(distance > 0) {
-    // let count = 0
-    //  this.odometer = count++;
-      return(`I ran out of fuel at ${this.odometer}!`);
 
-
+  if(this.tank === 0) {
+    return `I ran out of fuel at ${this.odometer} miles!`;
   }
 
-}
+
+  if (this.milesPerGallon ) 
+
+
+   this.odometer += distance; 
+  
+   this.tank -= distance / this.milesPerGallon 
+
+
+
+    //  - STRETCH: A car which runs out of `fuel` while driving can't drive any more distance:
+  //  + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer'
+
+
+
+
+
+};
+
 
 /*
   TASK 3
