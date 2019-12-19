@@ -93,36 +93,30 @@ Car.prototype.fill = function(gallons) {
   return this.tank += gallons;
 }
 
-// 1 gallon -- 40 miles per gallon    40mpg
-// 10 gallons-- 400 miles
-// 0.125  gallons     -- 5 miles
-
 
 
 Car.prototype.drive = function(distance) {
+  
+  const isDriveAble = this.tank * this.milesPerGallon;
 
-  if(this.tank === 0) {
-    return `I ran out of fuel at ${this.odometer} miles!`;
+  if (isDriveAble >= distance)  {
+    this.odometer += distance
+    this.tank -= distance / this.milesPerGallon
+
+  }
+
+  else {
+    this.odometer += isDriveAble;
+    this.tank -= isDriveAble / this.milesPerGallon 
+
   }
 
 
-  if (this.milesPerGallon ) 
+  if (this.tank === 0) {
+    return `I ran out of fuel at ${this.odometer} miles!`;
 
-
-   this.odometer += distance; 
-  
-   this.tank -= distance / this.milesPerGallon 
-
-
-
-    //  - STRETCH: A car which runs out of `fuel` while driving can't drive any more distance:
-  //  + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer'
-
-
-
-
-
-};
+}
+}
 
 
 /*
